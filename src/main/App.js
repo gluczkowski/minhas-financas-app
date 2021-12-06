@@ -4,6 +4,7 @@ import '../custom.css'
 import Rotas from './rotas';
 import Navbar from '../components/navbar';
 import 'toastr/build/toastr.min.js'
+import ProvedorAutenticacao from './provedorAutenticacao';
 
 
 import 'toastr/build/toastr.css'
@@ -16,12 +17,12 @@ import 'primeicons/primeicons.css'
 class App extends React.Component {
   render(){
   return (
-    <div>
+    <ProvedorAutenticacao>
       <Navbar/>        
         <div className="container">
             <Rotas />
         </div>
-    </div>
+    </ProvedorAutenticacao>
   );
 }
 }
