@@ -5,12 +5,13 @@ import CadastroUsuario from "../views/cadastroUsuario";
 import consultaLancamentos from "../views/lancamentos/consulta-lancamentos";
 import cadastroLancamentos from "../views/lancamentos/cadastro-lancamentos";
 import { AuthConsumer } from "./provedorAutenticacao";
+import landinPage from "../views/landinPage";
 
 import { Route, Switch , HashRouter, Redirect} from "react-router-dom";
 
 function RotaAutenticada({component: Component, isUsuarioAutenticado, ...props } ) {
     return(
-        <Route { ...props} render={ (componentProps) => {
+        <Route exact { ...props} render={ (componentProps) => {
             if(isUsuarioAutenticado){
                 return (
                     <Component {...componentProps}/>
@@ -27,9 +28,10 @@ function RotaAutenticada({component: Component, isUsuarioAutenticado, ...props }
 function Rotas(props){
     return(
         <HashRouter>
-            <Switch>                
-                <Route component={Login} path="/login" />
-                <Route component={CadastroUsuario} path="/cadastro-usuario"/>
+            <Switch> 
+                <Route component={LandingPage} exact path="/" />               
+                <Route component={Login} exact path="/login" />
+                <Route component={CadastroUsuario} exact path="/cadastro-usuario"/>
 
 
                 <RotaAutenticada isUsuarioAutenticado={props.isUsuarioAutenticado} component={Home} path="/home" />  
